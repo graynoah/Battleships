@@ -8,9 +8,9 @@ from components.style import Style
 from components.label import Label
 from components.component import Component
 
-from scene.gameScene import GameScene
-from scene.mainMenuScene import MainMenuScene
-from scene.settingsScene import SettingsScene
+from scene.game_scene import GameScene
+from scene.main_menu_scene import MainMenuScene
+from scene.settings_scene import SettingsScene
 
 
 class SceneManager(object):
