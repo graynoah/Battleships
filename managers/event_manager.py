@@ -67,6 +67,9 @@ class EventManager(object):
             if event.type == pygame.QUIT:
                 sm.SceneManager.instance.quit_game()
 
+            elif(event.type == pygame.VIDEORESIZE):
+                sm.SceneManager.instance.set_screen_size((event.w, event.h))
+
             elif(not sm.SceneManager.instance.get_root().is_enabled()):
                 return
 
