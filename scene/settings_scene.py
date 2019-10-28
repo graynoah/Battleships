@@ -25,12 +25,12 @@ class SettingsScene(object):
         self.create_sliders(root)
 
     def create_buttons(self, root: Component) -> None:
-        # """Create all buttons in the settings menu"""
+        """Create all buttons in the settings menu"""
 
         button_style = Style(background_color=(0, 255, 255),
                              primary_color=(0, 0, 0))
 
-        self.back_button = Button(on_click=self.open_main_menu,
+        self.back_button = Button(on_click=self._open_main_menu,
                                   rect=Rect(100, 450, 100, 100),
                                   style=Style(
                                       background_image=pygame.image.load(
@@ -39,19 +39,11 @@ class SettingsScene(object):
                                       primary_color=(0, 0, 0)),
                                   parent=root)
 
-        # if full screen mode is turned off, on_button will turn it on
-        # if full screen mode is turned on, off_button will turn it off
-
-        self.on_button = Button(on_click=self.open_full_screen(),
-                                text="ON", rect=Rect(450, 320, 50, 50),
-                                style=button_style,
-                                parent=root)
-
-        self.off_button = Button(on_click=self.close_full_screen(),
-                                 text="OFF",
-                                 rect=Rect(500, 320, 50, 50),
-                                 style=button_style,
-                                 parent=root)
+        self.fullscreen_button = Button(on_click=self._toggle_fullscreen,
+                                        text=self._get_window_mode_text(),
+                                        rect=Rect(450, 320, 150, 50),
+                                        style=button_style,
+                                        parent=root)
 
     def create_labels(self, root: Component) -> None:
         """ Create all labels in the settings menu. """
@@ -77,7 +69,7 @@ class SettingsScene(object):
                           style=label_style,
                           parent=root)
 
-        self.full_screen = Label(text="Full Screen Mode",
+        self.window_mode = Label(text="Window Mode",
                                  rect=Rect(200, 300, 200, 100),
                                  style=label_style,
                                  parent=root)
@@ -87,43 +79,31 @@ class SettingsScene(object):
         slider_style = Style(background_color=(102, 0, 102),
                              primary_color=(255, 255, 204))
 
-        self.soundFX_slider = Slider(on_value_changed=self.change_volume,
-                                     rect=Rect(430, 140, 150, 20),
+        self.soundFX_slider = Slider(on_value_changed=self._change_volume,
+                                     rect=Rect(450, 140, 150, 20),
                                      style=slider_style,
                                      parent=root)
 
-        self.music_slider = Slider(on_value_changed=self.change_volume,
-                                   rect=Rect(430, 210, 150, 20),
+        self.music_slider = Slider(on_value_changed=self._change_volume,
+                                   rect=Rect(450, 210, 150, 20),
                                    style=slider_style,
                                    parent=root)
 
-    def open_full_screen(self):
-        """ Switch game to full screen mode.
-        """
-        if (not self.is_fullscreen):
-            self.is_fullscreen = True
-            pass
-        else:
-            print("Already in full screen.")
+    def _toggle_fullscreen(self, button: int) -> None:
+        """Toggle the window mode between fullscreen and windowed."""
+        sm.SceneManager.instance.toggle_fullscreen()
 
-    def close_full_screen(self):
-        """ Turn off full screen mode and revert to regular screen.
-        """
-        if (self.is_fullscreen):
-            self.is_fullscreen = False
-            pass
+    def _get_window_mode_text(self) -> str:
+        """Get the text to display on the window mode button."""
+        if(sm.SceneManager.instance.is_fullscreen()):
+            return "Fullscreen"
         else:
-            print("Full screen mode is already off.")
+            return "Windowed"
 
-    def open_main_menu(self, buttn: int):
+    def _open_main_menu(self, buttn: int) -> None:
+        """Switches to the main menu."""
         sm.SceneManager.instance.change_scene(0)
 
-    def change_volume(self, value: float):
-        """ Change the volume of sound FX or music
-        """
+    def _change_volume(self, value: float) -> None:
+        """ Change the volume of sound FX or music."""
         print("volume changed to ", value)
-
-    def quit_game(self):
-        """ Allow human player to quit the game.
-        """
-        pygame.quit()
