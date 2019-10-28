@@ -54,6 +54,7 @@ class Component(object):
     def set_rect(self, rect: Rect) -> None:
         """Set the component's rectangle."""
         self._rect = rect
+        self._redraw()
 
     def set_style(self, style: Optional[Style]) -> None:
         """Set the component's style. The default style is used if <style> is
