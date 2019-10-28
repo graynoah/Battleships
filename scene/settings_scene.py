@@ -23,19 +23,20 @@ class SettingsScene(object):
         self.create_buttons(root)
         self.create_labels(root)
         self.create_sliders(root)
-        # self.test_textbox = Textbox(on_value_changed=self.test3,
-        #                           text="Calculating",
-        #                           rect=Rect(500, 0, 200, 100), parent=root)
 
     def create_buttons(self, root: Component) -> None:
         # """Create all buttons in the settings menu"""
+
+        button_style = Style(background_color=(0, 255, 255),
+                             primary_color=(0, 0, 0))
+
         self.back_button = Button(on_click=self.open_main_menu,
                                   rect=Rect(100, 450, 100, 100),
                                   style=Style(
                                       background_image=pygame.image.load(
                                           "images/left-arrow-icon.png"),
                                       background_color=(0, 255, 255),
-                                      color=(0, 0, 0)),
+                                      primary_color=(0, 0, 0)),
                                   parent=root)
 
         # if full screen mode is turned off, on_button will turn it on
@@ -43,70 +44,57 @@ class SettingsScene(object):
 
         self.on_button = Button(on_click=self.open_full_screen(),
                                 text="ON", rect=Rect(450, 320, 50, 50),
-                                style=Style(
-
-            background_color=(0, 255, 255),
-            color=(0, 0, 0)),
-            parent=root)
+                                style=button_style,
+                                parent=root)
 
         self.off_button = Button(on_click=self.close_full_screen(),
                                  text="OFF",
                                  rect=Rect(500, 320, 50, 50),
-                                 style=Style(
-            background_color=(0, 255, 255),
-            color=(0, 0, 0)),
-            parent=root)
+                                 style=button_style,
+                                 parent=root)
 
     def create_labels(self, root: Component) -> None:
         """ Create all labels in the settings menu. """
+        label_style = Style(background_color=(0, 128, 255),
+                            primary_color=(255, 255, 255))
 
         self.return_back = Label(text="Return to main menu",
                                  rect=Rect(220, 475, 250, 50),
                                  style=Style(
                                      background_color=(0, 0, 0),
-                                     color=(255, 255, 255)),
+                                     primary_color=(255, 255, 255)),
                                  parent=root)
 
         self.soundFX = Label(text="Adjust Sound FX",
                              rect=Rect(150, 120, 250, 50),
-                             style=Style(
-                                 background_color=(0, 128, 255),
-                                 color=(255, 255, 255)),
+                             style=label_style,
                              parent=root)
 
         self.music = Label(text="Music volume", rect=Rect(200, 200, 200, 50),
-                           style=Style(
-            background_color=(0, 128, 255),
-            color=(255, 255, 255)),
-            parent=root)
+                           style=label_style, parent=root)
 
         self.menu = Label(text="CHANGE SETTINGS", rect=Rect(400, 0, 250, 90),
-                          style=Style(
-            background_color=(0, 128, 255),
-            color=(255, 255, 255)),
-            parent=root)
+                          style=label_style,
+                          parent=root)
 
         self.full_screen = Label(text="Full Screen Mode",
                                  rect=Rect(200, 300, 200, 100),
-                                 style=Style(
-                                     background_color=(0, 128, 255),
-                                     color=(245, 255, 255)),
+                                 style=label_style,
                                  parent=root)
 
     def create_sliders(self, root: Component) -> None:
         """ Create all sliders in the settings menu. """
+        slider_style = Style(background_color=(102, 0, 102),
+                             primary_color=(255, 255, 204))
 
         self.soundFX_slider = Slider(on_value_changed=self.change_volume,
                                      rect=Rect(430, 140, 150, 20),
-                                     style=Style(background_color=(
-                                         102, 0, 102), color=(255, 255, 204)),
+                                     style=slider_style,
                                      parent=root)
 
         self.music_slider = Slider(on_value_changed=self.change_volume,
                                    rect=Rect(430, 210, 150, 20),
-                                   style=Style(background_color=(
-                                       102, 0, 102), color=(255, 255, 20)),
-
+                                   style=slider_style,
                                    parent=root)
 
     def open_full_screen(self):

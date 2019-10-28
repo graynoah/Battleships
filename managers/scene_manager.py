@@ -61,7 +61,7 @@ class SceneManager(object):
         self._clock = pygame.time.Clock()
 
         self._root = Panel(pygame.Rect(0, 0, 960, 540), style=Style(
-            background_color=(255, 0, 0)))
+            background_color=(255, 0, 0), border_width=0))
 
         em.EventManager()
 
