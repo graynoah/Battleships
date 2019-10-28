@@ -12,42 +12,66 @@ import managers.scene_manager as sm
 
 class MainMenuScene(object):
     def __init__(self, root: Panel):
-        def test(buttn: int):
-            print("Nimra")
-            if(self.test_but.is_enabled()):
-                self.test_but.disable()
-            else:
-                self.test_but.enable()
 
-        def open_settings(buttn: int):
-            sm.SceneManager.instance.change_scene(1)
+        WIDTH, HEIGHT = sm.SceneManager.instance.get_screen_size()
+        title_rect = Rect(0, 0, 500, 70)
+        pvc_rect = Rect(0, 0, 400, 40)
+        pvp_rect = Rect(0, 0, 400, 40)
+        settings_rect = Rect(0, 0, 400, 40)
+        quit_rect = Rect(0, 0, 400, 40)
 
-        def test2(value: float):
-            print("value changed", value)
-            self.test_but.enable()
+        title_rect.center = (WIDTH/2, HEIGHT/4)
+        pvc_rect.center = (WIDTH/2, (HEIGHT/2) + (HEIGHT/20))
+        pvp_rect.center = (WIDTH/2, (HEIGHT/2) + (3*HEIGHT/20))
+        settings_rect.center = (WIDTH/2, (HEIGHT/2) + (5*HEIGHT/20))
+        quit_rect.center = (WIDTH/2, (HEIGHT/2) + (7*HEIGHT/20))
 
-        def test3(value: str):
-            print("value changed", value)
-            self.test_but.enable()
+        self.title_label = Label(text="BATTLE SHIP!",
+                                 rect=title_rect,
+                                 style=Style(background_color=None,
+                                             border_width=0,
+                                             font=pygame.font.Font(
+                                                 'freesansbold.ttf', 64),
+                                             primary_color=(255, 255, 255)),
+                                 parent=root)
 
-        self.test_but = Button(on_click=test, text="lol",
-                               rect=Rect(200, 200, 200, 100),
-                               style=Style(background_color=(
-                                   0, 255, 0), primary_color=(0, 0, 255)),
-                               parent=root)
+        button_style = Style(primary_color=(255, 255, 255),
+                             background_color=(128, 0, 0),
+                             border_width=1,
+                             font=pygame.font.Font('freesansbold.ttf', 32))
 
-        self.test_but = Button(on_click=open_settings, text="Settings",
-                               rect=Rect(300, 300, 200, 100),
-                               style=Style(background_color=(
-                                   0, 255, 255), primary_color=(0, 0, 255)),
-                               parent=root)
+        self.pvc_button = Button(on_click=self._pvc_clicked,
+                                 text="Player vs Computer",
+                                 rect=pvc_rect,
+                                 style=button_style,
+                                 parent=root)
 
-        # test_slider = Slider(on_value_changed=test2,
-        #                         rect=Rect(400, 200, 200, 20),
-        #                         style=Style(background_color=(
-        #                             0, 0, 255), primary_color=(0, 255, 0)),
-        #                         parent=root)
+        self.pvp_button = Button(on_click=self._pvp_clicked,
+                                 text="Player vs Player",
+                                 rect=pvp_rect,
+                                 style=button_style,
+                                 parent=root)
 
-        # test_textbox = Textbox(on_edit_finished=test3,
-        #                         text="Calculating",
-        #                         rect=Rect(500, 0, 200, 100), parent=root)
+        self.settings_button = Button(on_click=self._settings_clicked,
+                                      text="Settings",
+                                      rect=settings_rect,
+                                      style=button_style,
+                                      parent=root)
+
+        self.quit_button = Button(on_click=self._quit_clicked,
+                                  text="Quit",
+                                  rect=quit_rect,
+                                  style=button_style,
+                                  parent=root)
+
+    def _pvc_clicked(self, button: int):
+        pass
+
+    def _pvp_clicked(self, button: int):
+        pass
+
+    def _settings_clicked(self, button: int):
+        sm.SceneManager.instance.change_scene(1)
+
+    def _quit_clicked(self, button: int):
+        sm.SceneManager.instance.quit_game()
