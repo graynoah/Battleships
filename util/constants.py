@@ -3,6 +3,9 @@ import pygame
 # The size of the screen when changing into windowed mode
 DEFAULT_WINDOWED_MODE_SIZE = (800, 600)
 
+# The minimum size that the can be
+MINIMUM_SCREEN_SIZE = (800, 600)
+
 # Valid characters for user input
 VALID_CHARACTERS = ("abcdefghijklmnopqrstuvwxyz"
                     "ABCDEFGHIJKLMNOPQRSTUVWXYZ"

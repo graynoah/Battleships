@@ -8,7 +8,7 @@ from components.panel import Panel
 from components.style import Style
 from components.label import Label
 from components.component import Component
-from util.constants import DEFAULT_WINDOWED_MODE_SIZE
+from util.constants import DEFAULT_WINDOWED_MODE_SIZE, MINIMUM_SCREEN_SIZE
 
 from scene.game_scene import GameScene
 from scene.main_menu_scene import MainMenuScene
@@ -93,7 +93,11 @@ class SceneManager(object):
     def set_screen_size(self, size: Tuple[int, int]) -> None:
         """Set the screen size. This method re-creates the active scene."""
         em.EventManager.instance.set_invalid()
-        self._screen_size = size
+        if (self._is_fullscreen):
+            self._screen_size = (0, 0)
+        else:
+            self._screen_size = (max(size[0], MINIMUM_SCREEN_SIZE[0]),
+                                 max(size[1], MINIMUM_SCREEN_SIZE[1]))
         self._setup_screen()
         self._root.set_rect(self._screen.get_rect())
         self._rest_fps_counter_position()
