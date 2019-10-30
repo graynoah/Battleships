@@ -42,14 +42,14 @@ class Style(object):
 
     def __init__(self,
                  background_image: pygame.Surface = None,
-                 background_color: Tuple[int, int, int] = (255, 255, 255),
+                 background_color: Tuple[int, int, int] = None,
                  hover_color: Tuple[int, int, int] = (190, 190, 190, 0),
-                 primary_color: Tuple[int, int, int] = (0, 0, 0),
+                 primary_color: Tuple[int, int, int] = (255, 255, 255),
                  secondary_color: Tuple[int, int, int] = (0, 0, 0),
                  force_parent_redraw: bool = False,
                  font: pygame.font = None,
-                 border_color: Tuple[int, int, int] = (0, 0, 0),
-                 border_width: int = 1) -> None:
+                 border_color: Tuple[int, int, int] = None,
+                 border_width: int = 0) -> None:
         """<background_color> is the color to be drawn behind components. A
         value of None indicates no background color. <background_image> is the
         surface of a image to be drawn behind components. A vlue of None
