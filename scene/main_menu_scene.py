@@ -38,6 +38,7 @@ class MainMenuScene(object):
         button_style = Style(primary_color=(255, 255, 255),
                              background_color=(128, 0, 0),
                              border_width=1,
+                             border_color=(0, 0, 0),
                              font=pygame.font.Font('freesansbold.ttf', 32))
 
         self.pvc_button = Button(on_click=self._pvc_clicked,
