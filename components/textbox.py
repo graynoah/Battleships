@@ -298,7 +298,7 @@ class Textbox(Label):
         text.
         """
         text_rect = self._text_image.get_rect()
-        text_rect.center = self.get_rect().center
+        text_rect.center = self._rect.center
 
         x, y = pygame.mouse.get_pos()
         x -= text_rect.x
@@ -331,7 +331,7 @@ class Textbox(Label):
         Component._draw(self, screen, changes)
 
         text_rect = self._text_image.get_rect()
-        text_rect.center = self.get_rect().center
+        text_rect.center = self._rect.center
 
         # Draw Selection Background
         if(self._has_multi_char_selection()):
@@ -357,6 +357,6 @@ class Textbox(Label):
             cursor_rect = pygame.Rect(text_rect.x + size[0],
                                       text_rect.y, 2, text_rect.height)
 
-            if(self.get_rect().x < cursor_rect.x < self.get_rect().right):
+            if(self._rect.x < cursor_rect.x < self._rect.right):
                 changes.append(screen.fill(
                     self._style.primary_color, cursor_rect))

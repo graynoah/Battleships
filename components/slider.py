@@ -57,9 +57,9 @@ class Slider(Component):
         self._max_value = max_value
         self._on_value_changed = on_value_changed
 
-    def set_rect(self, rect) -> None:
+    def set_rect(self, rect: Rect) -> None:
         """Set the slider's rectangle and update the useful area."""
-        self._rect = rect
+        Component.set_rect(self, rect)
         self._fill_rect = rect.inflate(
             -2 * self._style.border_width,
             -2 * self._style.border_width)

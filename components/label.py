@@ -57,9 +57,9 @@ class Label(Component):
         orignal_rect = self._text_image.get_rect()
 
         centered_rect = orignal_rect.copy()
-        centered_rect.center = self.get_rect().center
+        centered_rect.center = self._rect.center
 
-        clip_rect = centered_rect.clip(self.get_rect())
+        clip_rect = centered_rect.clip(self._rect)
         centered_clip_rect = clip_rect.copy()
         centered_clip_rect.center = orignal_rect.center
 

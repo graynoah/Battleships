@@ -48,11 +48,21 @@ class Component(object):
         self._children = []
         self.set_style(style)
         self._parent = None
-        self.set_parent(parent)
+        self._rect = None
         self.set_rect(rect)
+        self.set_parent(parent)
 
     def set_rect(self, rect: Rect) -> None:
         """Set the component's rectangle."""
+        if(self._rect is not None):
+            changed_x = rect.x - self._rect.x
+            changed_y = rect.y - self._rect.y
+            changed_w = rect.w - self._rect.w
+            changed_h = rect.h - self._rect.h
+            for child in self._children:
+                child.set_rect(child.get_rect().move(
+                    changed_x, changed_y).inflate(changed_w, changed_h))
+
         self._rect = rect
         self._redraw()
 
@@ -152,7 +162,7 @@ class Component(object):
 
     def get_rect(self) -> Rect:
         """Get the component's rectangle."""
-        return self._rect
+        return self._rect.copy()
 
     def update(self, dt: float) -> None:
         """Update the component. <dt> is the time since last update in

@@ -38,7 +38,7 @@ class Button(Label):
         # Draw hover color
         if(self.is_hovered()):
             changes.append(screen.fill(self._style.hover_color,
-                                       self.get_rect(), BLEND_RGB_MULT))
+                                       self._rect, BLEND_RGB_MULT))
 
         self._draw_text(screen, changes)
 
