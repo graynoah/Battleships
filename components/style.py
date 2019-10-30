@@ -49,20 +49,23 @@ class Style(object):
                  force_parent_redraw: bool = False,
                  font: pygame.font = None,
                  border_color: Tuple[int, int, int] = None,
-                 border_width: int = 0) -> None:
+                 border_width: int = 0,
+                 tertiary_color: Tuple[int, int, int] = (0, 0, 0)) -> None:
         """<background_color> is the color to be drawn behind components. A
         value of None indicates no background color. <background_image> is the
         surface of a image to be drawn behind components. A vlue of None
         indicates no background image. <hover_color> is the color that will be
         multiplied to the component's background when it is hovered over.
         <primary_color> is the main general purpose color for component
-        foregrounds. <secondary_color> is the alretnate general purpose color
+        foregrounds. <secondary_color> is the second general purpose color
         for component foregrounds. <force_parent_redraw> is whether or not to
         force the parent component to redraw when the component is redrawn.
         <font> is the text style to be used for any displayed text.
         <border_width> is the size of a solid border in pixels around a
         component. A value of 0 indicates no border. <border_color> is the
         color for component borders. A value of None indicates no border color.
+        <tertiary_color> is the third general purpose color for component
+        foregrounds.
         """
         self.background_image = background_image
         self.background_color = background_color
@@ -72,6 +75,7 @@ class Style(object):
         self.hover_color = hover_color
         self.border_width = border_width
         self.border_color = border_color
+        self.tertiary_color = tertiary_color
 
         if(font is None):
             self.font = pygame.font.Font(None, 30)

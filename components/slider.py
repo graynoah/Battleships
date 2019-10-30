@@ -127,10 +127,13 @@ class Slider(Component):
         if(self._show_handle):
             # Handle Fill
             changes.append(draw.circle(
-                screen, (255, 255, 0, 128),
-                filled_rect.midright, self._handle_radius))
+                screen, self._style.tertiary_color,
+                filled_rect.midright, self._handle_radius-1))
 
             # Handle Outline
-            changes.append(draw.circle(
-                screen, self._style.border_color, filled_rect.midright,
-                self._handle_radius, self._style.border_width))
+            if(self._style.border_width > 0 and
+               self._style.border_color is not None):
+
+                changes.append(draw.circle(
+                    screen, self._style.border_color, filled_rect.midright,
+                    self._handle_radius, self._style.border_width))
