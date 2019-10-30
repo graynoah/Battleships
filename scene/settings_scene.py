@@ -10,6 +10,8 @@ from components.slider import Slider
 from components.textbox import Textbox
 from components.label import Label
 from components.panel import Panel
+from components.horizontal_panel import HorizontalPanel
+from components.vertical_panel import VerticalPanel
 
 
 class SettingsScene(object):
@@ -19,75 +21,92 @@ class SettingsScene(object):
     """
 
     def __init__(self, root: Component):
-        self.is_fullscreen = False
-        self.create_buttons(root)
+        self.create_panels(root)
         self.create_labels(root)
+        self.create_buttons(root)
         self.create_sliders(root)
 
     def create_buttons(self, root: Component) -> None:
         """Create all buttons in the settings menu"""
 
         button_style = Style(background_color=(0, 255, 255),
-                             primary_color=(0, 0, 0))
+                             primary_color=(0, 0, 0),
+                             border_color=(0, 0, 0),
+                             border_width=1)
 
+        size = sm.SceneManager.instance.get_screen_size()
         self.back_button = Button(on_click=self._open_main_menu,
-                                  rect=Rect(100, 450, 100, 100),
+                                  rect=Rect(20, 20, 100, 100),
                                   style=Style(
+                                      background_color=(255, 0, 0),
                                       background_image=pygame.image.load(
-                                          "images/left-arrow-icon.png"),
-                                      background_color=(0, 255, 255),
-                                      primary_color=(0, 0, 0)),
+                                          "images/left-arrow-icon.png")),
                                   parent=root)
 
         self.fullscreen_button = Button(on_click=self._toggle_fullscreen,
                                         text=self._get_window_mode_text(),
                                         rect=Rect(450, 320, 150, 50),
                                         style=button_style,
-                                        parent=root)
+                                        parent=self.window_mode_panel)
+
+    def create_panels(self, root: Component):
+        size = sm.SceneManager.instance.get_screen_size()
+        self.options_panel = VerticalPanel(rect=Rect(size[0]/4, size[1]/4,
+                                                     size[0] / 2, size[1] / 2),
+                                           expand_height=False,
+                                           parent=root)
+
+        self.soundFx_panel = HorizontalPanel(rect=Rect(150, 120, 500, 50),
+                                             parent=self.options_panel)
+
+        self.music_panel = HorizontalPanel(rect=Rect(150, 120, 500, 50),
+                                           parent=self.options_panel)
+
+        self.window_mode_panel = HorizontalPanel(rect=Rect(150, 120, 500, 50),
+                                                 parent=self.options_panel)
 
     def create_labels(self, root: Component) -> None:
         """ Create all labels in the settings menu. """
         label_style = Style(background_color=(0, 128, 255),
                             primary_color=(255, 255, 255))
 
-        self.return_back = Label(text="Return to main menu",
-                                 rect=Rect(220, 475, 250, 50),
-                                 style=Style(
-                                     background_color=(0, 0, 0),
-                                     primary_color=(255, 255, 255)),
-                                 parent=root)
-
         self.soundFX = Label(text="Adjust Sound FX",
                              rect=Rect(150, 120, 250, 50),
                              style=label_style,
-                             parent=root)
+                             parent=self.soundFx_panel)
 
         self.music = Label(text="Music volume", rect=Rect(200, 200, 200, 50),
-                           style=label_style, parent=root)
-
-        self.menu = Label(text="CHANGE SETTINGS", rect=Rect(400, 0, 250, 90),
-                          style=label_style,
-                          parent=root)
+                           style=label_style, parent=self.music_panel)
 
         self.window_mode = Label(text="Window Mode",
                                  rect=Rect(200, 300, 200, 100),
                                  style=label_style,
-                                 parent=root)
+                                 parent=self.window_mode_panel)
+
+        size = sm.SceneManager.instance.get_screen_size()
+        title_rect = Rect(400, 45, 250, 50)
+        title_rect.centerx = size[0]/2
+
+        self.menu = Label(text="CHANGE SETTINGS", rect=title_rect,
+                          style=label_style,
+                          parent=root)
 
     def create_sliders(self, root: Component) -> None:
         """ Create all sliders in the settings menu. """
-        slider_style = Style(background_color=(102, 0, 102),
-                             primary_color=(255, 255, 204))
+        slider_style = Style(background_color=(255, 0, 0),
+                             primary_color=(255, 255, 204),
+                             secondary_color=(102, 0, 102),
+                             tertiary_color=(255, 0, 128))
 
         self.soundFX_slider = Slider(on_value_changed=self._change_volume,
                                      rect=Rect(450, 140, 150, 20),
                                      style=slider_style,
-                                     parent=root)
+                                     parent=self.soundFx_panel)
 
         self.music_slider = Slider(on_value_changed=self._change_volume,
                                    rect=Rect(450, 210, 150, 20),
                                    style=slider_style,
-                                   parent=root)
+                                   parent=self.music_panel)
 
     def _toggle_fullscreen(self, button: int) -> None:
         """Toggle the window mode between fullscreen and windowed."""
