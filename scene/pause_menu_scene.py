@@ -11,7 +11,7 @@ from components.vertical_panel import VerticalPanel
 import managers.scene_manager as sm
 
 
-class MainMenuScene(object):
+class PauseMenuScene(object):
     def __init__(self, root: Panel):
 
         size = sm.SceneManager.instance.get_screen_size()
@@ -38,15 +38,9 @@ class MainMenuScene(object):
                              border_color=(0, 0, 0),
                              font=pygame.font.Font('freesansbold.ttf', 32))
 
-        self.pvc_button = Button(rect=Rect(0, 0, 400, 40),
+        self.cont_button = Button(rect=Rect(0, 0, 400, 40),
                                  on_click=self._pvc_clicked,
-                                 text="Player vs Computer",
-                                 style=button_style,
-                                 parent=self.options_panel)
-
-        self.pvp_button = Button(rect=Rect(0, 0, 400, 40),
-                                 on_click=self._pvp_clicked,
-                                 text="Player vs Player",
+                                 text="Continue",
                                  style=button_style,
                                  parent=self.options_panel)
 
@@ -62,12 +56,9 @@ class MainMenuScene(object):
                                   style=button_style,
                                   parent=self.options_panel)
 
-    def _pvc_clicked(self, button: int):
+    def _cont_clicked(self, button: int):
         pass
-
-    def _pvp_clicked(self, button: int):
-        pass
-
+    
     def _settings_clicked(self, button: int):
         sm.SceneManager.instance.change_scene(1)
 
