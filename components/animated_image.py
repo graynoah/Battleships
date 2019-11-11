@@ -67,6 +67,9 @@ class AnimatedImage(Component):
         """
         Component.update(self, dt)
 
+        if(len(self._animation_frames) == 0):
+            return
+
         self._time_since_last_frame += dt
         if(self._time_since_last_frame > self._time_per_frame):
             self._time_since_last_frame -= self._time_per_frame
@@ -92,6 +95,10 @@ class AnimatedImage(Component):
         of rectangles that represent the changed areas of the screen.
         """
         Component._draw(self, screen, changes)
+
+        if(len(self._animation_frames) == 0):
+            return
+
         changes.append(screen.blit(self._animation_frames[self._frame_index],
                                    self._rect))
 
