@@ -84,8 +84,8 @@ class AnimatedImage(Component):
         self._raw_frames.clear()
 
         for filepath in sorted(os.listdir(folder_path)):
-            self._raw_frames.append(
-                image.load(f"{folder_path}/{filepath}").convert())
+            self._raw_frames.append(image.load(
+                f"{folder_path}/{filepath}").convert_alpha())
 
         self._time_per_frame = self._animation_duration / \
             len(self._raw_frames)
