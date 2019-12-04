@@ -46,9 +46,9 @@ class Component(object):
         self._needs_redraw = False
         self._is_enabled = True
         self._children = []
-        self.set_style(style)
         self._parent = None
         self._rect = None
+        self.set_style(style)
         self.set_rect(rect)
         self.set_parent(parent)
 
@@ -61,7 +61,9 @@ class Component(object):
             changed_h = rect.h - self._rect.h
             for child in self._children:
                 child.set_rect(child.get_rect().move(
-                    changed_x, changed_y).inflate(changed_w, changed_h))
+                    changed_x, changed_y))
+
+            # FIX HEIGHT CHANGE.inflate(changed_w, changed_h)
 
         self._rect = rect
         self._redraw()

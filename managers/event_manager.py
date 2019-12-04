@@ -37,7 +37,7 @@ class EventManager(object):
         self._is_invalid = True
         self._pressed_button = -1
         self._focused_component = None
-        self._hovered_component = sm.SceneManager.instance.get_root()
+        self._hovered_component = None
 
     def get_focused_component(self) -> Component:
         """Get the currently focused component."""
@@ -134,7 +134,9 @@ class EventManager(object):
         already the hovered component
         """
         if(self._hovered_component is not hovered_component):
-            self._hovered_component._on_hover_exit()
+            if(self._hovered_component is not None):
+                self._hovered_component._on_hover_exit()
+
             self._hovered_component = hovered_component
             self._hovered_component._on_hover_enter()
 
