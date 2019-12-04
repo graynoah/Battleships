@@ -15,9 +15,9 @@ TBD
 ## How to Install the Battleship
 
 To install the game, use the prebuilt binaries listed below.
-[Windows_64](TBD)
-[Mac_64](TBD)
-[Linux_64](TBD)
+-   [Windows_64](TBD)
+-   [Mac_64](TBD)
+-   [Linux_64](TBD)
 
 If you do not see your operating system above, or would like to build from source, download
 [Python 3.8.0](https://www.python.org/ftp/python/3.8.0/python-3.8.0.exe). Once downloaded open a terminal and run pip install pygame.
