@@ -3,6 +3,7 @@ from typing import List, Tuple
 from players.ship import Ship
 import managers.game_manager as gm
 from util.observable import Observable
+import managers.audio_manager as am
 
 
 class Player(Observable):
@@ -60,13 +61,18 @@ class Player(Observable):
         if(result == 0):
             print(self._name, "Miss")
             self._guesses.append((coordinate[0], coordinate[1], False))
+            am.AudioManager.instance.shoot()
+
         elif(result == 1):
             print(self._name, "Hit")
             self._guesses.append((coordinate[0], coordinate[1], True))
+            am.AudioManager.instance.ship_hit()
+
         elif(result == 2):
             print(self._name, "SUNK")
             self._guesses.append((coordinate[0], coordinate[1], True))
             self._sunken_ships += 1
+            am.AudioManager.instance.ship_hit()
         else:
             return
 

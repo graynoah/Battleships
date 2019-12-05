@@ -12,6 +12,7 @@ from components.label import Label
 from components.panel import Panel
 from components.horizontal_panel import HorizontalPanel
 from components.vertical_panel import VerticalPanel
+import managers.audio_manager as am
 
 
 class SettingsScene(object):
@@ -98,15 +99,19 @@ class SettingsScene(object):
                              secondary_color=(102, 0, 102),
                              tertiary_color=(255, 0, 128))
 
-        self.soundFX_slider = Slider(on_value_changed=self._change_volume,
-                                     rect=Rect(450, 140, 150, 20),
-                                     style=slider_style,
-                                     parent=self.soundFx_panel)
+        self.soundFX_slider = Slider(
+            on_value_changed=am.AudioManager.instance.set_fx_volume,
+            value=am.AudioManager.instance.get_fx_volume(),
+            rect=Rect(450, 140, 150, 20),
+            style=slider_style,
+            parent=self.soundFx_panel)
 
-        self.music_slider = Slider(on_value_changed=self._change_volume,
-                                   rect=Rect(450, 210, 150, 20),
-                                   style=slider_style,
-                                   parent=self.music_panel)
+        self.music_slider = Slider(
+            on_value_changed=am.AudioManager.instance.set_music_volume,
+            value=am.AudioManager.instance.get_music_volume(),
+            rect=Rect(450, 210, 150, 20),
+            style=slider_style,
+            parent=self.music_panel)
 
     def _toggle_fullscreen(self, button: int) -> None:
         """Toggle the window mode between fullscreen and windowed."""
