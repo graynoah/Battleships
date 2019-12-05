@@ -47,7 +47,7 @@ class Player(Observable):
         """
         pass
 
-    def guess(self, coordinate: Tuple[int, int]) -> optional[int]:
+    def guess(self, coordinate: Tuple[int, int]) -> int:
         """Called by a player's sqaure_clicked. Takes a shot at the given
         <coordinate>, resulting in either a Hit, Miss, or Sinking an enemy
         ship.
