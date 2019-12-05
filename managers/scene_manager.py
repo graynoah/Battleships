@@ -13,6 +13,7 @@ from util.constants import DEFAULT_WINDOWED_MODE_SIZE, MINIMUM_SCREEN_SIZE
 from scene.game_scene import GameScene
 from scene.main_menu_scene import MainMenuScene
 from scene.settings_scene import SettingsScene
+from scene.pause_menu_scene import PauseMenuScene
 
 
 class SceneManager(object):
@@ -66,7 +67,8 @@ class SceneManager(object):
         self._screen_size = (0, 0)
         self._is_fullscreen = True
         self._clock = pygame.time.Clock()
-        self._scenes = [MainMenuScene, SettingsScene]
+        self._scenes = [MainMenuScene,
+                        SettingsScene, GameScene, PauseMenuScene]
         self._running = True
 
         self._setup_screen()
@@ -74,8 +76,6 @@ class SceneManager(object):
         # Always visible components
         self._root = Panel(self._screen.get_rect(), style=Style(
             background_color=(255, 0, 0), border_width=0))
-
-        em.EventManager()
 
         self._fps_counter = Label(text="Calculating",
                                   rect=pygame.Rect(0, 25, 75, 20),
