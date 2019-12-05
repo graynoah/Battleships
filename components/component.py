@@ -57,13 +57,9 @@ class Component(object):
         if(self._rect is not None):
             changed_x = rect.x - self._rect.x
             changed_y = rect.y - self._rect.y
-            changed_w = rect.w - self._rect.w
-            changed_h = rect.h - self._rect.h
             for child in self._children:
                 child.set_rect(child.get_rect().move(
                     changed_x, changed_y))
-
-            # FIX HEIGHT CHANGE.inflate(changed_w, changed_h)
 
         self._rect = rect
         self._redraw()
