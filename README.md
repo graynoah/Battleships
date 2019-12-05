@@ -2,7 +2,7 @@
 
 ## Game Description
 
-Battleships is a guessing game with some strategy-type elements. Our game can be played between two players (people), or between a player and a computer. The game is played on a grid, at the start of the game players place their ships on their respective grids. One ship can cover multiple spots on the grid, and ships are hidden from the view of the other player. The game progresses in turns, switching between players and allowing them to take a "shot" at the other players grid, in an attempt to hit the location of their hidden ships. The location of hit and missed shots are displayed on the grid for players to see. Once all spots on that ship are hit, the ship becomes sunk, and once all of an players ships are sunk, the game is over and the player with ships remaining unsunk wins!
+Battleships is a guessing game with some strategy-type elements. Our game can be played between two players (people), or between a player and a computer. The game is played on a grid, at the start of the game players place their ships on their respective grids. A ship can cover multiple spots on the grid, and ships are hidden from the view of the other player. The game progresses in turns, switching between players and allowing them to take a "shot" at the other players grid, in an attempt to hit the location of their hidden ships. The location of hit and missed shots are displayed on the grid for players to see. Once all spots on that ship are hit, the ship becomes sunk, and once all of an players ships are sunk, the game is over and the player with ships remaining unsunk wins!
 
 ## Screenshots
 
