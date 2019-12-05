@@ -20,7 +20,7 @@ class MainMenuScene(object):
         """Create a new MainMenuScene, creating the gui components to
         display.
         """
-        size = sm.SceneManager.instance.get_screen_size()
+        size = root.get_rect().size
         title_rect = Rect(0, 0, 500, 70)
         title_rect.center = (size[0] / 2, size[1] / 2 - 200)
 
