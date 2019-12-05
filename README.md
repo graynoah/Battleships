@@ -9,8 +9,7 @@ Battleships is a guessing game with some strategy-type elements. Our game can be
 TBD
 
 ## Game Controls and Features
-
-TBD
+Battleships allows you to customize the game settings to your preference. For instance, the settings menu will allow you to choose to play in full screen and change the sound volume to your liking. A user can also pause the game at any point with the pause menu and resume the game when it is convenient. Moreover, Battleships has a Human vs Computer feature in addition to playing a Human vs Human game. Therefore, the user can choose who they want to play with at the beginning of the game. 
 
 ## How to Install the Battleship
 
@@ -49,6 +48,9 @@ Information.
 
 **Noah** - I created the computer player, designing and implementing it's strategy to play the game. As well as coming
 up with the game description in the README.
+
+**Nimra** - I made an audio manager to play sounds / music in the game. As part of making the manager, I searched for audio files online that we could use in our game. The audio files I added were: background music, "ship hit" sound effect and "canon shot" sound effect. Then, I made methods in the manager that will load the audio files and play or stop them as needed. I also made an abstract player class which indicates the attributes that all players in this game must have. In addition, I helped design the setting menu page. In the settings menu, I chose a good background color scheme and designed buttons that allow the user to customize the game. For example, I designed a label for the sound volume and positioned a slider to change the volume.
+To the README, I contributed to "Game Controls and Features". More specifically, I mentioned that users can control music volume, fullscreen mode and opponent type. 
 
 ## License Information
 
