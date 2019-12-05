@@ -48,14 +48,14 @@ class Player(Observable):
         """
         pass
 
-    def guess(self, coordinate: Tuple[int, int]):
+    def guess(self, coordinate: Tuple[int, int]) -> int:
         """Called by a player's sqaure_clicked. Takes a shot at the given
         <coordinate>, resulting in either a Hit, Miss, or Sinking an enemy
         ship.
         """
         for guess in self._guesses:
             if(guess[:2] == coordinate):
-                return
+                return -1
 
         result = gm.GameManager.instance.guess(self, coordinate)
         if(result == 0):
@@ -74,9 +74,10 @@ class Player(Observable):
             self._sunken_ships += 1
             am.AudioManager.instance.ship_hit()
         else:
-            return
+            return -1
 
         self.notify_observers()
+        return result
 
     def get_guesses(self) -> List[Tuple[int, int, bool]]:
         """Returns the List of this player's guesses.

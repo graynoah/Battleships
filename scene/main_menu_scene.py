@@ -11,6 +11,7 @@ from components.vertical_panel import VerticalPanel
 import managers.scene_manager as sm
 from managers.game_manager import GameManager
 from players.playerHuman import PlayerHuman
+from players.playerComputer import PlayerComputer
 
 
 class MainMenuScene(object):
@@ -78,7 +79,7 @@ class MainMenuScene(object):
     def _pvc_clicked(self, button: int):
         """Start a new game of player vs computer."""
         GameManager.instance.setup_game(
-            PlayerHuman("Player"), PlayerHuman("Computer"))
+            PlayerHuman("Player"), PlayerComputer("Computer"))
         sm.SceneManager.instance.change_scene(2)
 
     def _pvp_clicked(self, button: int):
