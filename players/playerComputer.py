@@ -1,25 +1,26 @@
 from players.player import Player
-from ships.ship import Ship
+from players.ship import Ship
+from random import randint
 
 
 class PlayerComputer(Player):
-    """A Computer player in the battleships game
+    """A Computer player in the battleships game.
     """
 
-    def __init__(self, name: str):
-        Player.__init__(self, name)
-
-    def attack(self):
-        """Makes a move for the computerPlayer
+    def on_turn_started(self):
+        """On computer players turn, makes a random shot at enemy's grid
         """
-        # TODO
-        pass
+        # if(len(self._guesses) > 0):
+        randomX = randint(0, 9)
+        randomY = randint(0, 9)
+        while self.guess((randomX, randomY)) == -1:
+            randomX = randint(0, 9)
+            randomY = randint(0, 9)
 
     def get_possible_moves(self, row, col):
         """Checks the coordinates surrounding <row> and <col>, returning a
         list that contains the [row, col] of moves that can be made
         """
-        # TODO
         pass
 
     def is_sunk(self):
@@ -37,4 +38,3 @@ class PlayerComputer(Player):
         ship
         """
         pass
-
