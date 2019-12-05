@@ -13,7 +13,6 @@ from util.constants import DEFAULT_WINDOWED_MODE_SIZE, MINIMUM_SCREEN_SIZE
 from scene.game_scene import GameScene
 from scene.main_menu_scene import MainMenuScene
 from scene.settings_scene import SettingsScene
-from scene.pause_menu_scene import PauseMenuScene
 
 
 class SceneManager(object):
@@ -67,8 +66,7 @@ class SceneManager(object):
         self._screen_size = (0, 0)
         self._is_fullscreen = True
         self._clock = pygame.time.Clock()
-        self._scenes = [MainMenuScene,
-                        SettingsScene, GameScene, PauseMenuScene]
+        self._scenes = [MainMenuScene, SettingsScene, GameScene]
         self._running = True
 
         self._setup_screen()
