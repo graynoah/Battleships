@@ -9,27 +9,21 @@ Battleships is a guessing game with some strategy-type elements. Our game can be
 TBD
 
 ## Game Controls and Features
-Battleships allows you to customize the game settings to your preference. For instance, the settings menu will allow you to choose to play in full screen and change the sound volume to your liking. A user can also pause the game at any point with the pause menu and resume the game when it is convenient. Moreover, Battleships has a Human vs Computer feature in addition to playing a Human vs Human game. Therefore, the user can choose who they want to play with at the beginning of the game. 
+
+Battleships allows you to customize the game settings to your preference. For instance, the settings menu will allow you to choose to play in full screen and change the sound volume to your liking. A user can also pause the game at any point with the pause menu and resume the game when it is convenient. Moreover, Battleships has a Human vs Computer feature in addition to playing a Human vs Human game. Therefore, the user can choose who they want to play with at the beginning of the game.
 
 ## How to Install the Battleship
 
-To install the game, use the prebuilt binaries listed below.
-
-- [Windows_64](TBD)
-- [Mac_64](TBD)
-- [Linux_64](TBD)
-
-If you do not see your operating system above, or would like to build from source, download
+To install the game, download
 [Python 3.8.0](https://www.python.org/ftp/python/3.8.0/python-3.8.0.exe). Once downloaded open a terminal and run pip install pygame.
 After that is done downloading and installing, change to you desired install directory using cd \[desired directory\]. Then clone our repository by doing git clone https://github.com/graynoah/Battleships.git. Once it is done downloading, you will see a folder called Battleships appear in your desired directory, run the main.py file inside the folder to play the game.
-
 
 ## Documentation and Directory Structure
 
 The Battleships repository contains subfolders to organize the code.
-The *Audio* folder contains all the sound and music files used in Battleships. Similarly, the Images folder contains pictures used in the game. The *Players* folder contains the different types of players: the abstract *Player*, *HumanPlayer* and *ComputerPlayer*. The *ComputerPlayer*, for instance, is implemented with the Random strategy: on its turn, the computer will make a random shot at the opponent ships. Since a *Ship* object is a crucial playing piece in this game, the *Ship* class was added to *Players* as well. The *Components* folder has all the components that make up our graphic user interface: buttons, animated grids, backgrounds, etc. There are also different managers, such as the *AudioManager*, which are located in the *Managers* folder. Each manager helps control an aspect of the game. For instance, the *AudioManager* is controlling the sound in Battleships. Moreover, each scene in the *Scenes* folder is responsible for the screen display throughout the game. Finally, the *util* folder contains design patterns, such as the Observer pattern, that were used to design the game. 
+The _Audio_ folder contains all the sound and music files used in Battleships. Similarly, the Images folder contains pictures used in the game. The _Players_ folder contains the different types of players: the abstract _Player_, _HumanPlayer_ and _ComputerPlayer_. The _ComputerPlayer_, for instance, is implemented with the Random strategy: on its turn, the computer will make a random shot at the opponent ships. Since a _Ship_ object is a crucial playing piece in this game, the _Ship_ class was added to _Players_ as well. The _Components_ folder has all the components that make up our graphic user interface: buttons, animated grids, backgrounds, etc. There are also different managers, such as the _AudioManager_, which are located in the _Managers_ folder. Each manager helps control an aspect of the game. For instance, the _AudioManager_ is controlling the sound in Battleships. Moreover, each scene in the _Scenes_ folder is responsible for the screen display throughout the game. Finally, the _util_ folder contains design patterns, such as the Observer pattern, that were used to design the game.
 
-An important class that could be extended is the *ComputerPlayer* class. Currently there is a Random strategy for making a move; a better idea could be a "Greedy" strategy. A Greedy strategy would aim to hit an opponent ship on every move. One idea is to spread out the hits rather than shooting in the same area every time. That way, the player can cover as much area on the board as possible, which increases the chance of hitting an opponent ship.
+An important class that could be extended is the _ComputerPlayer_ class. Currently there is a Random strategy for making a move; a better idea could be a "Greedy" strategy. A Greedy strategy would aim to hit an opponent ship on every move. One idea is to spread out the hits rather than shooting in the same area every time. That way, the player can cover as much area on the board as possible, which increases the chance of hitting an opponent ship.
 
 ## Authors
 
@@ -37,10 +31,10 @@ Team Deer consists of 4 members, of which three are 2nd-year, one is 3rd-year, a
 This project was done for credit in the course [CSC290](https://student.utm.utoronto.ca/calendar/course_detail.pl?Depart=7&Course=CSC290H5).
 Group members are listed below:
 
-- Nimra Aftab
-- Julian de Rushe
-- Jicun Zhou
-- Noah Hamilton Gray
+-   Nimra Aftab
+-   Julian de Rushe
+-   Jicun Zhou
+-   Noah Hamilton Gray
 
 ## Addendum
 
@@ -54,7 +48,7 @@ Information.
 up with the game description in the README.
 
 **Nimra** - I made an audio manager to play sounds / music in the game. As part of making the manager, I searched for audio files online that we could use in our game. The audio files I added were: background music, "ship hit" sound effect and "canon shot" sound effect. Then, I made methods in the manager that will load the audio files and play or stop them as needed. I also made an abstract player class which indicates the attributes that all players in this game must have. In addition, I helped design the setting menu page. In the settings menu, I chose a good background color scheme and designed buttons that allow the user to customize the game. For example, I designed a label for the sound volume and positioned a slider to change the volume.
-To the README, I contributed to "Game Controls and Features". More specifically, I mentioned that users can control music volume, fullscreen mode and opponent type. Finally, I completed the entire paragraph on documentation and provided a suggestion for how others can extend our game. 
+To the README, I contributed to "Game Controls and Features". More specifically, I mentioned that users can control music volume, fullscreen mode and opponent type. Finally, I completed the entire paragraph on documentation and provided a suggestion for how others can extend our game.
 
 ## License Information
 
