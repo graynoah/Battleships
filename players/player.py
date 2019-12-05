@@ -7,6 +7,7 @@ from util.observable import Observable
 
 class Player(Observable):
     """ A player in the Battleships game.
+
     === Private Attributes ===
         _name:
             The name of the player
@@ -101,11 +102,6 @@ class Player(Observable):
         """Changes the number of ships to <num>.
         """
         self._num_of_ships = num
-
-    def add_num_of_ships(self):
-        """Adds one to the number of ships a player has.
-        """
-        self._num_of_ships += 1
 
     def get_num_of_ships(self) -> int:
         """Returns the total number of ships that the player has.
