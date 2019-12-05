@@ -47,8 +47,7 @@ Information.
 
 **Julian** - I created the gui framework used in the game. I also created the installation instructions in the README.
 
-**Noah** - I created the computer player, designing and implementing it's strategy to play the game. As well as coming
-up with the game description in the README.
+**Noah** - I created the players; player, playerHuman, and playerComputer. Designing and implementing playerComputer's strategy to play the game. As well as coming up with the game description in the README.
 
 ## License Information
 
