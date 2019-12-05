@@ -22,7 +22,7 @@ class BackgroundWater(AnimatedImage):
         self._vertical_tile_count = 10
 
         AnimatedImage.__init__(self, rect,
-                               folder_path="images/water4",
+                               folder_path="images/water",
                                animation_duration=1000,
                                style=style,
                                parent=parent)
